@@ -122,8 +122,8 @@ Component là **khối xây dựng cơ bản của Angular**.
 ### app.ts
 
 ```ts
-import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
+import { Component } from "@angular/coroe";
+import { RouterOutlet } from "@angular/ruter";
 
 @Component({
   selector: "app-root",

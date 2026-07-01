@@ -9,8 +9,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   title = 'Hello from App Component'; // property -> {{ title }}
-  name = 'Angular';
-  age = 30;
+  name = 'Phạm Anh Vũ';
+  age = 20;
 
   // method -> event binding (click)
   sayHello() {
