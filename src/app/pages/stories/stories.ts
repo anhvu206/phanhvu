@@ -1,4 +1,13 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+interface Story {
+  id: number;
+  title: string;
+  image: string;
+  author: string;
+  views: number;
+}
 
 @Component({
   selector: 'app-stories',
@@ -7,54 +16,58 @@ import { Component } from '@angular/core';
   styleUrl: './stories.css',
 })
 export class Stories {
-  stories = [
-    {
-      title: 'One Piece',
-      author: 'Eiichiro Oda',
-      views: 100000,
-      year: 1997,
-      category: 'Phiêu lưu',
-      image: 'https://picsum.photos/100?1',
-    },
-    {
-      title: 'Naruto',
-      author: 'Masashi Kishimoto',
-      views: 90000,
-      year: 1999,
-      category: 'Hành động',
-      image: 'https://picsum.photos/100?2',
-    },
-    {
-      title: 'Doraemon',
-      author: 'Fujiko F. Fujio',
-      views: 70000,
-      year: 1969,
-      category: 'Thiếu nhi',
-      image: 'https://picsum.photos/100?3',
-    },
-    {
-      title: 'Dragon Ball',
-      author: 'Akira Toriyama',
-      views: 120000,
-      year: 1984,
-      category: 'Hành động',
-      image: 'https://picsum.photos/100?4',
-    },
-    {
-      title: 'Attack On Titan',
-      author: 'Hajime Isayama',
-      views: 95000,
-      year: 2009,
-      category: 'Dark Fantasy',
-      image: 'https://picsum.photos/100?5',
-    },
-    {
-      title: 'Bleach',
-      author: 'Tite Kubo',
-      views: 85000,
-      year: 2001,
-      category: 'Shounen',
-      image: 'https://picsum.photos/100?6',
-    },
-  ];
+  stories: Story[] = [];
+
+  loading: boolean = false;
+
+  error: string = '';
+
+  deletingId: number | null = null;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.getStories();
+  }
+
+  getStories() {
+    this.loading = true;
+    this.error = '';
+
+    this.http.get<Story[]>('http://localhost:3000/stories').subscribe({
+      next: (data) => {
+        this.stories = data;
+        this.loading = false;
+      },
+
+      error: () => {
+        this.loading = false;
+        this.error = 'Không thể tải dữ liệu!';
+      },
+    });
+  }
+
+  deleteStory(id: number) {
+    const confirmDelete = confirm('Bạn có chắc muốn xóa không?');
+
+    if (!confirmDelete) return;
+
+    this.deletingId = id;
+
+    this.http.delete(`http://localhost:3000/stories/${id}`).subscribe({
+      next: () => {
+        this.stories = this.stories.filter((story) => story.id !== id);
+
+        this.deletingId = null;
+
+        alert('Xóa thành công');
+      },
+
+      error: () => {
+        this.deletingId = null;
+
+        alert('Xóa thất bại');
+      },
+    });
+  }
 }

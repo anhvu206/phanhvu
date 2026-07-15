@@ -3,7 +3,7 @@ import { Home } from './home/home';
 import { About } from './pages/about/about';
 import { Contact } from './contact/contact';
 import { Stories } from './pages/stories/stories';
-import { AddStory } from './add-story/add-story';
+import { AddStory } from './pages/add-story/add-story';
 
 export const routes: Routes = [
   { path: '', component: Home },
