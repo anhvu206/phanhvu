@@ -22,8 +22,7 @@ export class Stories {
       views: 90000,
       year: 1999,
       category: 'Hành động',
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoR-8MB-n3RIvf0F3B7T-CDft3KIw_AaxlNl5ahuSvop9jgkrudVfGRx0&s',
+      image: 'https://picsum.photos/100?2',
     },
     {
       title: 'Doraemon',
@@ -55,8 +54,7 @@ export class Stories {
       views: 85000,
       year: 2001,
       category: 'Shounen',
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoR-8MB-n3RIvf0F3B7T-CDft3KIw_AaxlNl5ahuSvop9jgkrudVfGRx0&s',
+      image: 'https://picsum.photos/100?6',
     },
   ];
 }

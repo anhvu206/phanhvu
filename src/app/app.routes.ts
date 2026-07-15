@@ -3,6 +3,7 @@ import { Home } from './home/home';
 import { About } from './pages/about/about';
 import { Contact } from './contact/contact';
 import { Stories } from './pages/stories/stories';
+import { AddStory } from './add-story/add-story';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -10,4 +11,7 @@ export const routes: Routes = [
   { path: 'about', component: About },
   { path: 'contact', component: Contact },
   { path: 'stories', component: Stories },
+
+  // Buổi 4
+  { path: 'add-story', component: AddStory },
 ];
