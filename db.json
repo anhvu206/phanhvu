@@ -54,5 +54,12 @@
       "category": "Shounen",
       "image": "https://picsum.photos/100?6"
     }
+  ],
+  "products": [
+    {
+      "name": "123",
+      "price": 12345,
+      "id": 1
+    }
   ]
 }
